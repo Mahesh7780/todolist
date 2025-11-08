@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
-const PORT = 5000;
+const PORT = 5001;
 
 let tasks = []; // temporary in-memory storage
 
@@ -42,3 +42,4 @@ app.delete("/tasks/:id", (req, res) => {
 app.listen(PORT, () =>
   console.log(`✅ Backend running on http://localhost:${PORT}`)
 );
+
