@@ -4,17 +4,17 @@ const bodyParser = require("body-parser");
 const app = express();
 const PORT = 5001;
 
-let tasks = []; // temporary in-memory storage
+let tasks = []; 
 
 app.use(cors());
 app.use(bodyParser.json());
 
-// Get all tasks
+
 app.get("/tasks", (req, res) => {
   res.json(tasks);
 });
 
-// Add new task
+
 app.post("/tasks", (req, res) => {
   const { text } = req.body;
   const newTask = { id: Date.now(), text, completed: false };
@@ -22,7 +22,6 @@ app.post("/tasks", (req, res) => {
   res.json(newTask);
 });
 
-// Toggle completion
 app.put("/tasks/:id", (req, res) => {
   const task = tasks.find(t => t.id == req.params.id);
   if (task) {
@@ -33,13 +32,13 @@ app.put("/tasks/:id", (req, res) => {
   }
 });
 
-// Delete task
+
 app.delete("/tasks/:id", (req, res) => {
   tasks = tasks.filter(t => t.id != req.params.id);
   res.json({ message: "Deleted" });
 });
 
 app.listen(PORT, () =>
-  console.log(`✅ Backend running on http://localhost:${PORT}`)
+  console.log(`Backend running on http://localhost:${PORT}`)
 );
 

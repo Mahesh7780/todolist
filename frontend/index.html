@@ -1,16 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ToDo List</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zentask</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google OAuth SDK -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
-  <div class="container">
+  <!-- 🔹 LOGIN SCREEN -->
+  <div id="login-screen" class="login-screen">
+    <h1 class="login-title">Zentask</h1>
+    <p class="login-subtitle">Organize your day, effortlessly ⚡</p>
+
+    <div id="g_id_onload"
+      data-client_id="839497947107-dbrm052osucb7h27kd1d72117j8t1neb.apps.googleusercontent.com"
+      data-callback="handleCredentialResponse">
+    </div>
+
+    <div class="g_id_signin"
+      data-type="standard"
+      data-theme="outline"
+      data-size="large"
+      data-text="signin_with"
+      data-shape="pill"
+      data-logo_alignment="left">
+    </div>
+  </div>
+
+  <!-- 🔹 MAIN APP -->
+  <div id="app" class="container hidden">
+    <header class="app-header">
+      <h1>Zentask</h1>
+      <div class="user-menu" id="user-menu">
+        <img id="user-pic" class="user-pic" alt="User Profile" />
+        <button id="logout-btn" class="hidden" onclick="logoutUser()">Logout</button>
+      </div>
+    </header>
+
     <div class="status-container">
       <div class="details-container">
-        <h1>Zentask</h1>
         <p>Keep it up!</p>
         <div id="taskbar">
           <div id="progress"></div>
@@ -27,14 +57,12 @@
     </form>
 
     <ul id="task-list"></ul>
+
+    <footer class="footer">
+      <p>© 2025 <span id="app-name">Zentask</span>. All rights reserved.</p>
+    </footer>
   </div>
 
   <script src="index.js"></script>
-    <footer class="footer">
-    <p>Hackme © 2025 <span id="app-name">Zentask</span>. All rights reserved.</p>
-  </footer>
-</body>
-</html>
-
 </body>
 </html>
